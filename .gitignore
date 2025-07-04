@@ -1,0 +1,27 @@
+# C# / .NET
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.csproj.user
+*.vs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env/
+.venv/
+venv/
+ENV/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+.idea
