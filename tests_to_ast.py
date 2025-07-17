@@ -1,7 +1,7 @@
 import json
-from sympy.parsing.sympy_parser import parse_expr
-from sympy import symbols
 import sys
+
+from sympy.parsing.sympy_parser import parse_expr
 
 DEFAULT_INPUT_FILE = 'tests.json'
 DEFAULT_OUTPUT_FILE = 'tests_ast.json'
@@ -29,18 +29,18 @@ def sympy_to_ast(expr):
         base, exp = expr.args
         return {"type": "pow", "left": sympy_to_ast(base), "right": sympy_to_ast(exp)}
     if expr.func.__name__ == 'sqrt':
-        return {"type": "func", "name": "sqrt", "args": [sympy_to_ast(expr.args[0])]} 
+        return {"type": "func", "name": "sqrt", "args": [sympy_to_ast(expr.args[0])]}
     if expr.func.__name__ == 'log':
         if len(expr.args) == 2:
-            return {"type": "func", "name": "log", "args": [sympy_to_ast(expr.args[0]), sympy_to_ast(expr.args[1])]} 
+            return {"type": "func", "name": "log", "args": [sympy_to_ast(expr.args[0]), sympy_to_ast(expr.args[1])]}
         else:
-            return {"type": "func", "name": "ln", "args": [sympy_to_ast(expr.args[0])]} 
+            return {"type": "func", "name": "ln", "args": [sympy_to_ast(expr.args[0])]}
     if expr.func.__name__ == 'floor':
-        return {"type": "func", "name": "floor", "args": [sympy_to_ast(expr.args[0])]} 
+        return {"type": "func", "name": "floor", "args": [sympy_to_ast(expr.args[0])]}
     if expr.func.__name__ == 'ceiling':
-        return {"type": "func", "name": "ceil", "args": [sympy_to_ast(expr.args[0])]} 
+        return {"type": "func", "name": "ceil", "args": [sympy_to_ast(expr.args[0])]}
     if expr.func.__name__ == 'round':
-        return {"type": "func", "name": "round", "args": [sympy_to_ast(expr.args[0])]} 
+        return {"type": "func", "name": "round", "args": [sympy_to_ast(expr.args[0])]}
     if expr.func.__name__ == 'NegativeOne':
         return {"type": "const", "value": -1}
     if expr.func.__name__ == 'sub':
@@ -126,4 +126,4 @@ def main():
     print("Все формулы и тесты корректны.")
 
 if __name__ == '__main__':
-    main() 
+    main()
